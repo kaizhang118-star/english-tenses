@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F7F9FC">
+<title>英语时态速查</title>
+<style>
+:root{
+  --paper:#F7F9FC;
+  --grid:#DFE8F3;
+  --card:#FFFFFF;
+  --ink:#16222E;
+  --ink-soft:#5E6E7E;
+  --ink-faint:#93A1AF;
+  --pen:#D8453C;
+  --pen-soft:#FBE9E7;
+  --marker:#FFD24A;
+  --rule:#C9D6E4;
+  --shadow:0 1px 0 rgba(22,34,46,.06), 0 6px 18px -12px rgba(22,34,46,.35);
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",SimSun,Georgia,serif;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#11161C; --grid:#1C242E; --card:#171E26; --ink:#E9EFF5;
+    --ink-soft:#9AABBB; --ink-faint:#687888; --pen:#FF6F63; --pen-soft:#2A1B1A;
+    --marker:#FFD24A; --rule:#2A3542;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.9);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.65;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px);
+  background-size:100% 28px; background-position:0 -1px;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:linear-gradient(180deg,var(--paper) 0%,rgba(247,249,252,0) 12%,rgba(247,249,252,0) 88%,var(--paper) 100%);
+  opacity:.9;
+}
+@media (prefers-color-scheme:dark){
+  body::before{background:linear-gradient(180deg,var(--paper) 0%,rgba(17,22,28,0) 12%,rgba(17,22,28,0) 88%,var(--paper) 100%)}
+}
+.wrap{position:relative; z-index:1; max-width:600px; margin:0 auto; padding:0 16px 64px}
+
+/* ── 头部 ── */
+.masthead{padding:26px 0 14px}
+.brandline{display:flex; align-items:baseline; gap:8px; margin:0}
+.brandline h1{
+  font-family:var(--serif); font-size:29px; line-height:1.15; margin:0;
+  letter-spacing:.01em; font-weight:700;
+}
+.brandline .dot{width:9px;height:9px;border-radius:50%;background:var(--pen);flex:none;transform:translateY(-3px)}
+.sub{margin:8px 0 0; color:var(--ink-soft); font-size:13.5px}
+.sub b{color:var(--pen); font-weight:600}
+
+/* ── 时间轴 hero ── */
+.axis{display:flex; align-items:center; gap:10px; margin:20px 0 10px; color:var(--ink-soft); font-size:12px; letter-spacing:.08em}
+.axis .bar{position:relative; flex:1; height:2px; background:var(--rule)}
+.axis .now{position:absolute; left:52%; top:-7px; width:2px; height:16px; background:var(--pen)}
+.axis .now::after{
+  content:"现在"; position:absolute; left:50%; transform:translateX(-50%); top:18px;
+  font-size:11px; color:var(--pen); letter-spacing:.04em; white-space:nowrap; font-weight:600;
+}
+.zones{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:26px}
+.zone{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:10px; box-shadow:var(--shadow)}
+.zone-head{font-family:var(--serif); font-size:12.5px; color:var(--ink-soft); letter-spacing:.04em; margin-bottom:8px}
+.chip{
+  display:block; width:100%; text-align:left; background:transparent; border:0;
+  border-top:1px dashed var(--rule); padding:9px 2px; cursor:pointer;
+  font-family:var(--sans); color:var(--ink); font-size:14px; line-height:1.4;
+  -webkit-tap-highlight-color:transparent; border-radius:2px;
+}
+.chip:first-of-type{border-top:0}
+.chip b{display:block; font-family:var(--serif); font-size:15.5px; font-weight:700}
+.chip b.pen{color:var(--pen)}
+.chip span{display:block; color:var(--ink-soft); font-size:12.5px}
+.chip i{display:block; color:var(--ink-faint); font-style:normal; font-family:var(--mono); font-size:11px; margin-top:3px; word-break:break-all}
+.chip:active{background:var(--pen-soft)}
+.chip:focus-visible{outline:2px solid var(--pen); outline-offset:2px}
+
+/* ── 搜索 ── */
+.searchbar{position:sticky; top:0; z-index:5; padding:12px 0 10px; background:linear-gradient(var(--paper) 74%,rgba(247,249,252,0)); margin-top:14px}
+@media (prefers-color-scheme:dark){.searchbar{background:linear-gradient(var(--paper) 74%,rgba(17,22,28,0))}}
+.searchbox{display:flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:0 12px; box-shadow:var(--shadow)}
+.searchbox svg{flex:none; color:var(--ink-faint)}
+.searchbox input{
+  flex:1; border:0; background:transparent; padding:13px 0; font:inherit; color:var(--ink);
+  font-size:16px; min-width:0;
+}
+.searchbox input:focus{outline:0}
+.searchbox input::placeholder{color:var(--ink-faint)}
+.clear{border:0;background:transparent;color:var(--ink-faint);font-size:20px;line-height:1;padding:6px;cursor:pointer;display:none}
+.clear.on{display:block}
+
+/* ── 分段控件 ── */
+.segments{display:flex; gap:0; border:1px solid var(--rule); border-radius:3px; overflow:hidden; background:var(--card); margin-bottom:16px}
+.segments button{
+  flex:1; border:0; background:transparent; padding:11px 4px; font:inherit; font-size:14px; color:var(--ink-soft);
+  cursor:pointer; border-left:1px solid var(--rule);
+}
+.segments button:first-child{border-left:0}
+.segments button[aria-selected="true"]{background:var(--ink); color:var(--paper); font-weight:600}
+.segments button:focus-visible{outline:2px solid var(--pen); outline-offset:-2px}
+
+/* ── 列表与卡片 ── */
+.list-title{font-family:var(--serif); font-size:15px; margin:0 0 10px; color:var(--ink)}
+.list-title small{font-family:var(--sans); font-weight:400; color:var(--ink-faint); font-size:12px; margin-left:6px; letter-spacing:.02em}
+ul.index{list-style:none; margin:0; padding:0}
+ul.index li{margin-bottom:10px}
+.row{
+  display:flex; align-items:center; gap:12px; width:100%; text-align:left; cursor:pointer;
+  background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:13px 14px;
+  box-shadow:var(--shadow); color:var(--ink); font:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.row:active{background:var(--pen-soft)}
+.row:focus-visible{outline:2px solid var(--pen); outline-offset:2px}
+.row .no{
+  flex:none; width:30px; height:30px; border:1px solid var(--rule); border-radius:2px;
+  display:grid; place-items:center; font-family:var(--mono); font-size:13px; color:var(--ink-soft);
+}
+.row .body{flex:1 1 auto; min-width:0; display:block}
+.row .t{display:block; font-family:var(--serif); font-size:17px; font-weight:700; line-height:1.3}
+.row .s{
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  overflow:hidden; color:var(--ink-soft); font-size:12.5px; margin-top:2px; line-height:1.5;
+}
+.row .tag{
+  flex:0 0 auto; font-size:10.5px; color:var(--pen); background:var(--pen-soft);
+  border-radius:2px; padding:3px 6px; font-family:var(--mono); max-width:80px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.row .arrow{flex:none; color:var(--ink-faint)}
+
+/* ── 详情 ── */
+.backbar{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:14px 0 6px}
+.back{
+  border:0; background:transparent; color:var(--pen); font:inherit; font-size:14.5px;
+  padding:8px 8px 8px 0; cursor:pointer; font-weight:600;
+}
+.back:focus-visible{outline:2px solid var(--pen); outline-offset:2px; border-radius:2px}
+.copy{
+  border:1px solid var(--rule); background:var(--card); color:var(--ink-soft); font:inherit;
+  font-size:12.5px; padding:7px 11px; border-radius:3px; cursor:pointer; white-space:nowrap;
+}
+.copy:focus-visible{outline:2px solid var(--pen); outline-offset:2px}
+.detail-h{font-family:var(--serif); font-size:25px; margin:4px 0 6px; line-height:1.25}
+.detail-meta{color:var(--ink-soft); font-size:13px; margin:0 0 4px}
+.lede{margin:14px 0 0; font-size:16.5px; line-height:1.7}
+.lede .marker{background:linear-gradient(transparent 58%,var(--marker) 58%); padding:0 2px}
+section.block{margin-top:24px}
+section.block > h2{
+  font-family:var(--serif); font-size:15px; margin:0 0 10px; letter-spacing:.02em;
+  display:flex; align-items:center; gap:8px;
+}
+section.block > h2::before{content:""; width:14px; height:2px; background:var(--pen); flex:none}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px; background:var(--card); box-shadow:var(--shadow)}
+th,td{border:1px solid var(--rule); padding:8px 9px; text-align:left; vertical-align:top}
+th{background:rgba(22,34,46,.04); font-weight:600; font-size:12.5px; color:var(--ink-soft); letter-spacing:.02em}
+@media (prefers-color-scheme:dark){th{background:rgba(255,255,255,.05)}}
+td.mono,.mono{font-family:var(--mono); font-size:12.5px; line-height:1.55}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:3px}
+
+.markers{display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none}
+.markers li{
+  font-family:var(--mono); font-size:12px; border:1px solid var(--rule); background:var(--card);
+  padding:4px 8px; border-radius:2px;
+  background-image:linear-gradient(transparent 62%,var(--marker) 62%);
+}
+.ex{border-left:3px solid var(--pen); padding:2px 0 2px 12px; margin:0 0 12px}
+.ex .en{font-size:15.5px; line-height:1.5}
+.ex .zh{color:var(--ink-soft); font-size:13.5px; margin-top:2px}
+.ex .note{font-size:12.5px; color:var(--ink-faint); margin-top:3px}
+.bullets{margin:0; padding-left:18px; font-size:14.5px}
+.bullets li{margin-bottom:7px}
+.bullets li b{font-family:var(--serif)}
+.trap{margin:0; padding:0; list-style:none}
+.trap li{
+  position:relative; padding:8px 0 8px 20px; font-size:14.5px; border-bottom:1px dashed var(--rule);
+}
+.trap li:last-child{border-bottom:0}
+.trap li::before{content:"✗"; position:absolute; left:0; top:8px; color:var(--pen); font-size:12px}
+.keys{margin:0; padding:0; list-style:none; counter-reset:k}
+.keys li{
+  counter-increment:k; position:relative; padding:9px 0 9px 30px; font-size:14.5px;
+  border-bottom:1px dashed var(--rule);
+}
+.keys li:last-child{border-bottom:0}
+.keys li::before{
+  content:counter(k); position:absolute; left:0; top:9px; width:20px; height:20px;
+  border:1px solid var(--pen); color:var(--pen); border-radius:2px;
+  display:grid; place-items:center; font-family:var(--mono); font-size:11px;
+}
+.note-box{
+  border:1px dashed var(--rule); background:var(--card); padding:11px 13px; font-size:13.5px;
+  color:var(--ink-soft); border-radius:3px;
+}
+.note-box b{color:var(--ink)}
+.links a{color:var(--pen); text-decoration:none; border-bottom:1px solid var(--pen); margin-right:12px; font-size:14px}
+.links a:focus-visible{outline:2px solid var(--pen); outline-offset:2px}
+.res-group{margin-top:18px}
+.res-group h3{font-family:var(--serif); font-size:14px; margin:0 0 8px; color:var(--ink-soft)}
+.term{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:10px 13px; margin-bottom:8px; box-shadow:var(--shadow)}
+.term .w{font-family:var(--serif); font-weight:700; font-size:15.5px}
+.term .d{font-size:14px; color:var(--ink-soft); margin-top:2px}
+.term .c{font-size:12px; color:var(--ink-faint); font-family:var(--mono); margin-top:4px}
+.term .c a{color:var(--pen); text-decoration:none}
+.empty{text-align:center; color:var(--ink-soft); padding:34px 10px; font-size:14.5px}
+.empty b{display:block; font-family:var(--serif); font-size:16px; color:var(--ink); margin-bottom:6px}
+footer{margin-top:36px; padding-top:16px; border-top:1px solid var(--rule); color:var(--ink-faint); font-size:12.5px; line-height:1.7}
+footer b{color:var(--ink-soft)}
+.toast{
+  position:fixed; left:50%; bottom:26px; transform:translate(-50%,14px); z-index:20;
+  background:var(--ink); color:var(--paper); padding:10px 18px; border-radius:3px;
+  font-size:13.5px; opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;
+}
+.toast.on{opacity:1; transform:translate(-50%,0)}
+@media (prefers-reduced-motion:no-preference){
+  .masthead,.hero,.controls{animation:rise .34s ease-out both}
+  .hero{animation-delay:.05s} .controls{animation-delay:.1s}
+  @keyframes rise{from{opacity:0; transform:translateY(7px)} to{opacity:1; transform:none}}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+@media (max-width:360px){
+  .zones{grid-template-columns:1fr}
+  .brandline h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="brandline"><span class="dot"></span><h1>英语时态速查</h1></p>
+    <p class="sub">7 个时态 · 2 个专题 · 5 个口诀 — 来源：<b>《英语时态》笔记</b></p>
+  </header>
+  <main id="app"></main>
+  <footer>
+    <b>范围</b>：本工具只覆盖原笔记内容（现在进行时、一般将来时、had better、一般现在时、一般过去时、现在完成时、过去进行时、瞬间动词与延续性动词 · when vs while）。过去完成时、过去将来时、完成进行时等未包含。<br>
+    内容为笔记摘要，界面离线可用。
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="kb">
+{
+  "tenses": [
+    {
+      "id": "ch01", "no": 1, "name": "现在进行时", "en": "Present Continuous", "tag": "Be + doing",
+      "meaning": "说话这一刻正在发生，或现阶段一直在做（此刻不一定在做）的事。",
+      "key": ["进行时的谓语核心是 Be，不是 ing 动词。", "否定把 not 挂在 Be 后，提问把 Be 提到句首，动词 ing 原地不动。"],
+      "tables": [
+        {"caption": "构成", "head": ["句式", "结构"], "rows": [
+          ["肯定句", "主语 + Be（am / is / are）+ 动词 ing"],
+          ["否定句", "主语 + Be not（am not / isn't / aren't）+ 动词 ing"],
+          ["一般疑问句", "Be（Am / Is / Are）+ 主语 + 动词 ing？"]
+        ]}
+      ],
+      "bullets": [
+        {"title": "两种含义", "items": [
+          "说话时正在发生：At the moment, they are playing in the garden.（他们现在正在花园玩。）",
+          "现阶段正在发生：I am teaching English at XES.（我在学而思教英语。）"
+        ]},
+        {"title": "现在分词（ing 形式）变化四规则", "items": [
+          "一般动词直接在词尾加 ing：work → working",
+          "去掉不发音的 e 再加 ing：bite → biting",
+          "重读闭音节（重读辅元辅）双写最后一个辅音字母再加 ing：run → running",
+          "以 ie 结尾，把 ie 变成 y 再加 ing：die → dying；lie → lying"
+        ]}
+      ],
+      "markers": ["now", "at the moment", "Look!", "Listen!", "today", "this morning / afternoon / evening", "tonight"],
+      "examples": [
+        {"en": "At the moment, they are playing in the garden.", "zh": "他们现在正在花园玩。"},
+        {"en": "I am teaching English at XES.", "zh": "我在学而思教英语。"}
+      ],
+      "pitfalls": [
+        "丢 Be 动词：I teaching English. → I am teaching English.",
+        "只要词尾是「辅元辅」就双写，忽略「重读」这个前提：open → opening（不双写）。"
+      ],
+      "links": [["ch04", "一般现在时"], ["ch07", "过去进行时"], ["ch08", "瞬间动词"]]
+    },
+    {
+      "id": "ch02", "no": 2, "name": "一般将来时", "en": "Simple Future", "tag": "shall / will / be going to",
+      "meaning": "表示在将来某一时间要发生的动作或存在的状态，三种表达各有分工。",
+      "key": ["有计划、有迹象用 be going to；纯将来或临时决定用 will。", "三个表达后面一律动词原形。"],
+      "tables": [
+        {"caption": "三种表达的构成", "head": ["表达", "适用人称", "肯定句", "否定句", "一般疑问句"], "rows": [
+          ["shall", "仅 I / we", "主语 + shall + 动词原形", "主语 + shall not（shan't）+ 动词原形", "Shall + 主语 + 动词原形？"],
+          ["will", "所有人称", "主语 + will + 动词原形", "主语 + will not（won't）+ 动词原形", "Will + 主语 + 动词原形？"],
+          ["be going to", "所有人称", "主语 + am / is / are going to + 动词原形", "主语 + am not / isn't / aren't going to + 动词原形", "Am / Is / Are + 主语 + going to + 动词原形？"]
+        ]}
+      ],
+      "bullets": [
+        {"title": "三者分工", "items": [
+          "shall：只用于主语为第一人称 I、we 时。",
+          "will：最常用，适用于所有人称；特殊用法是表示将要到达的年及年龄。",
+          "be going to：表示计划、打算、准备做某事；也用于有迹象表明将要发生的天气。"
+        ]}
+      ],
+      "markers": ["tomorrow", "next", "future", "soon", "from now on", "in + 段时间"],
+      "examples": [
+        {"en": "I will be thirty years old next year.", "zh": "我明年就三十岁了。", "note": "will 表将要到达的年龄"},
+        {"en": "Look at the black clouds outside. It is going to rain.", "zh": "看外面的乌云啊，要下雨了。", "note": "有迹象的天气"},
+        {"en": "I am going to paint it pink.", "zh": "我要把它刷成粉色的。", "note": "计划、打算"}
+      ],
+      "pitfalls": [
+        "be going to 后面接 ing 或过去式：必须接动词原形。",
+        "漏掉 Be：I going to paint it pink. → I am going to paint it pink.",
+        "shall 配非第一人称主语。"
+      ],
+      "links": [["ch03", "had better"], ["ch01", "现在进行时"]]
+    },
+    {
+      "id": "ch03", "no": 3, "name": "had better", "en": "Had Better", "tag": "建议",
+      "meaning": "表示「最好还是……」，用于提出建议、劝告或表达一种愿望；had 不表示过去时间。",
+      "key": ["否定词挂在 better 之后：had better not do。", "人称、时态都不改变它的形式。"],
+      "tables": [
+        {"caption": "两个句型", "head": ["句式", "结构", "例句"], "rows": [
+          ["肯定", "主语 + had better + 动词原形", "You'd better get up before six o'clock."],
+          ["否定", "主语 + had better not + 动词原形", "You'd better not dance in the classroom."]
+        ]}
+      ],
+      "bullets": [
+        {"title": "三条固定规则", "items": [
+          "had better 中的 had 不表示过去时间。",
+          "不论第几人称、什么时态，均用此形式（没有 have better / has better）。",
+          "had better 后加动词原形。"
+        ]}
+      ],
+      "markers": [],
+      "examples": [
+        {"en": "You'd better get up before six o'clock.", "zh": "你最好在六点之前起床。"},
+        {"en": "You'd better not dance in the classroom.", "zh": "你最好不要在教室里跳舞。"}
+      ],
+      "pitfalls": [
+        "按人称换形：写成 He has better… / They have better…",
+        "后面接 to do 或 doing。",
+        "把 You'd better… 误解成过去时。"
+      ],
+      "links": [["ch04", "情态动词的句式"], ["ch02", "助动词 + 原形"]]
+    },
+    {
+      "id": "ch04", "no": 4, "name": "一般现在时", "en": "Simple Present", "tag": "三通道 + 三单",
+      "meaning": "表示经常性/习惯性动作、主语具备的性格能力特征、一种状态，以及客观事实和普遍真理。",
+      "key": ["先给谓语分类（Be / 情态动词 / 实义动词），再套对应句式。", "一旦出现 do / does，实义动词立即还原（吸星大法 / 照妖镜）。"],
+      "tables": [
+        {"caption": "三条句式通道", "head": ["谓语类型", "肯定句", "否定句", "一般疑问句"], "rows": [
+          ["Be 动词", "主语 + am / is / are + 其它", "主语 + am not / isn't / aren't + 其它", "Am / Is / Are + 主语 + 其它？"],
+          ["情态动词", "主语 + 情态动词 + 其它", "主语 + 情态动词 + not + 其它", "情态动词 + 主语 + 其它？"],
+          ["实义动词", "主语 + 实义动词 + 其它", "主语 + don't / doesn't + 动词原形 + 其它", "Do / Does + 主语 + 动词原形 + 其它？"]
+        ]},
+        {"caption": "实义动词变三单形式", "head": ["规则", "变化", "例"], "rows": [
+          ["a", "多数动词直接加 -s", "work → works"],
+          ["b", "以 o、s、x、ch、sh 结尾加 -es（哦撑死是错）", "do → does；wash → washes"],
+          ["c", "以辅音字母 + y 结尾，y 变 i 再加 -es", "study → studies"],
+          ["d", "特殊变化", "have → has"]
+        ]}
+      ],
+      "bullets": [
+        {"title": "四类用法", "items": [
+          "经常性 / 习惯性动作，常与频率时间状语连用：Mrs. Sawyer stays at home every day.",
+          "主语的性格、能力、特征：He is a careless boy.（他是一个粗心的男孩。）",
+          "一种状态：There is a picture of his dog on the wall.（墙上挂着一张他狗狗的照片。）",
+          "客观事实和普遍真理：The earth moves around the sun.（地球围着太阳转。）"
+        ]},
+        {"title": "频率副词的位置", "items": [
+          "位置在 Be 动词和助动词的后面，实义动词的前面 —— 口诀「Be 助后，实义前」。"
+        ]}
+      ],
+      "markers": ["always", "usually", "often", "sometimes", "rarely", "never", "every…", "once…", "twice…", "…times", "in the morning / afternoon / evening", "at noon / night", "on Sundays"],
+      "examples": [
+        {"en": "Mrs. Sawyer stays at home every day.", "zh": "Sawyer 太太每天待在家里。", "note": "习惯性动作，主语三单，动词加 -s"},
+        {"en": "The earth moves around the sun.", "zh": "地球围着太阳转。", "note": "客观真理"},
+        {"en": "He is a careless boy.", "zh": "他是一个粗心的男孩。", "note": "主语特征，Be 动词通道"}
+      ],
+      "pitfalls": [
+        "三单漏 -s：He work every day. → He works every day.",
+        "用了 does 还带 -s：doesn't works → doesn't work。",
+        "频率副词位置错：He stays always at home. → He always stays at home."
+      ],
+      "links": [["ch01", "正在 vs 习惯"], ["ch05", "一般过去时"], ["ch06", "has 的搭配"]]
+    },
+    {
+      "id": "ch05", "no": 5, "name": "一般过去时", "en": "Simple Past", "tag": "过去的确切",
+      "meaning": "表示在过去一个确切的时间发生并且已经结束的动作 —— 作者简称「过去的确切」。",
+      "key": ["口诀「直去双改特」覆盖规则变化，不规则变化按词形族成组记。", "看到 yesterday / last / ago / just now，用一般过去时而不是现在完成时。"],
+      "tables": [
+        {"caption": "两条句式通道", "head": ["谓语类型", "肯定句", "否定句", "一般疑问句"], "rows": [
+          ["Be 动词", "主语 + was / were + 其它", "主语 + wasn't / weren't + 其它", "Was / Were + 主语 + 其它？"],
+          ["实义动词", "主语 + 动词过去式 + 其它", "主语 + didn't + 动词原形 + 其它", "Did + 主语 + 动词原形 + 其它？"]
+        ]},
+        {"caption": "动词变过去式：直去双改特", "head": ["规则", "变化", "例"], "rows": [
+          ["直", "一般动词直接加 -ed", "work → worked；play → played"],
+          ["去", "以不发音的 e 结尾，直接加 -d", "move → moved"],
+          ["改", "辅音字母 + y，把 y 变 i 再加 -ed", "study → studied"],
+          ["双", "重读闭音节双写最后一个辅音再加 -ed", "stop → stopped"],
+          ["特", "不规则动词的过去式变化", "go → went；teach → taught"]
+        ]}
+      ],
+      "bullets": [
+        {"title": "特别注意", "items": [
+          "一般过去时句中动词要变成其过去式。",
+          "有些情态动词有过去式（can → could）；有些保持不变（must 用于过去时态依然为 must）。",
+          "did 是助动词，句中有 did 时实义动词变原形（吸星大法 / 照妖镜）。"
+        ]},
+        {"title": "不规则动词（成组记）", "items": [
+          "keep / feel / sleep / sweep → kept / felt / slept / swept",
+          "build / lend / send / spend → built / lent / sent / spent",
+          "ring / sit / drink / sing / swim / begin / give → rang / sat / drank / sang / swam / began / gave",
+          "ride / drive / write → rode / drove / wrote",
+          "think / buy / bring / fight → thought / bought / brought / fought",
+          "teach / catch → taught / caught",
+          "know / grow / draw → knew / grew / drew",
+          "put / let / read → put / let / read（三形不变）"
+        ]}
+      ],
+      "markers": ["just now", "yesterday", "ago", "last", "before", "when + 过去时间", "this 系列"],
+      "examples": [
+        {"en": "I didn't walk the dog at six yesterday evening.", "zh": "我昨天晚上六点钟没有遛狗。", "note": "didn't 后 walk 还原"},
+        {"en": "Did you walk the dog at six yesterday evening?", "zh": "你昨天晚上六点钟遛狗吗？"},
+        {"en": "He was tired last night.", "zh": "他昨晚很累。", "note": "Be 动词通道"}
+      ],
+      "pitfalls": [
+        "用了 didn't 还保留过去式：didn't went → didn't go。",
+        "给不变形的情态动词硬加过去式：must 在过去语境里依然是 must。",
+        "句中有明确过去时间却用现在完成时。"
+      ],
+      "links": [["ch06", "过去的模糊"], ["ch04", "一般现在时"], ["ch07", "过去进行时"]]
+    },
+    {
+      "id": "ch06", "no": 6, "name": "现在完成时", "en": "Present Perfect", "tag": "过去的模糊",
+      "meaning": "动作发生在过去但时间不明确，重点落在它对现在的影响，或从过去一直持续到现在 —— 作者简称「过去的模糊」。",
+      "key": ["形式：have / has + 过去分词。", "时间确切用一般过去时，时间模糊用现在完成时。", "for 配时间段，since 配时间点。"],
+      "tables": [
+        {"caption": "构成", "head": ["句式", "结构", "例句"], "rows": [
+          ["肯定句", "主语 + have / has + 过去分词 + 其它", "I have just finished my homework."],
+          ["否定句", "主语 + have / has + not + 过去分词 + 其它", "I haven't finished my homework yet."],
+          ["疑问句", "Have / Has + 主语 + 过去分词 + 其它？", "Have you finished your homework?"]
+        ]},
+        {"caption": "和一般过去时的分界", "head": ["对照项", "一般过去时", "现在完成时"], "rows": [
+          ["笔记命名", "过去的确切", "过去的模糊"],
+          ["时间", "明确的过去时间", "时间模糊"],
+          ["侧重", "动作本身、已结束", "对现在的影响 / 持续到现在"],
+          ["标志词", "just now, yesterday, ago, last", "just, already, yet, for, since, up to now, by"]
+        ]},
+        {"caption": "常考短语", "head": ["短语", "含义", "例句"], "rows": [
+          ["have gone to", "到某地去了（去了；未归）", "Zoe has gone to America."],
+          ["have been to", "曾经去过某地（去过；已归）", "Zoe has been to America."]
+        ]}
+      ],
+      "bullets": [
+        {"title": "两种含义", "items": [
+          "已完成：动作发生在过去、已结束，并对现在产生影响 —— 与一般过去时的区别就是强调对现在的影响；标志词 just, never, ever, already, yet。",
+          "未完成：动作从过去开始，一直持续到现在，并有可能继续持续；标志词 for, since, up to now, up till now, by（完成时好朋友）。"
+        ]},
+        {"title": "过去分词怎么来", "items": [
+          "多数动词的过去分词与过去式相同，遵循口诀「直去双改特」，为 ABB 型。",
+          "AAA 型：cut cut cut；ABA 型：come came come；ABC 型：go went gone，do / does did done。"
+        ]},
+        {"title": "for 与 since", "items": [
+          "for：长达……时间（加时间段），强调某动作持续了多长时间。",
+          "since：自从……（加时间点或过去发生的动作），强调某动作是从何时开始的。"
+        ]},
+        {"title": "标志词口诀：just easy & fun", "items": [
+          "just；ever；since；for；up to now；up till now；never。",
+          "already 多用于肯定句；yet 置于句尾，常用于疑问句及否定句。",
+          "常与次数连用，表示某动作已经做过 N 次：I have seen the movie three times.（这部电影我已经看过三次了。）"
+        ]}
+      ],
+      "markers": ["just", "never", "ever", "already", "yet", "for", "since", "up to now", "up till now", "by"],
+      "examples": [
+        {"en": "I have just finished my homework.", "zh": "我刚刚写完作业。", "note": "暗指现在可以出去玩了 —— 这就是「对现在的影响」"},
+        {"en": "Zoe has studied English for ten years.", "zh": "Zoe 已经学了十年的英语了。", "note": "for + 时间段"},
+        {"en": "Zoe has gone to America.", "zh": "Zoe 去美国了。", "note": "去了，未归"}
+      ],
+      "pitfalls": [
+        "句中有明确过去时间却用现在完成时：I have finished it yesterday → I finished it yesterday.",
+        "have gone to / have been to 混用：判断依据是「人回来了没」。",
+        "for 后面接时间点、since 后面接时间段。",
+        "already / yet 位置与句类错配。"
+      ],
+      "links": [["ch05", "一般过去时"], ["ch04", "has 的搭配"], ["ch07", "过去进行时"]]
+    },
+    {
+      "id": "ch07", "no": 7, "name": "过去进行时", "en": "Past Continuous", "tag": "过去的精确",
+      "meaning": "表示在过去一个精确的时间或时间段正在发生的动作 —— 作者简称「过去的精确」。",
+      "key": ["was / were + doing，否定加 not，疑问提前 was / were，不要引入 did。", "它是现在进行时的过去镜像。"],
+      "tables": [
+        {"caption": "构成", "head": ["句式", "结构", "例句"], "rows": [
+          ["肯定句", "主语 + was / were + doing", "I was walking the pig at six yesterday evening."],
+          ["否定句", "主语 + wasn't / weren't + doing", "I was not walking the pig at six yesterday evening."],
+          ["一般疑问句", "Was / Were + 主语 + doing？", "Were you walking the pig at six yesterday evening?"]
+        ]}
+      ],
+      "bullets": [
+        {"title": "when 的用法", "items": [
+          "原笔记这一节标题下没有内容（缺口）。可按「瞬间动词与延续性动词」一章补足：when 后可接瞬间动词，也可接延续性动词，多接瞬间动词；while 后通常只接延续性动词。"
+        ]}
+      ],
+      "markers": ["at + 时刻 + 过去的时间", "at this time + 过去的时间"],
+      "examples": [
+        {"en": "I was walking the pig at six yesterday evening.", "zh": "我昨天晚上六点钟在遛猪。"},
+        {"en": "Were you walking the pig at six yesterday evening?", "zh": "你昨天晚上六点钟遛猪吗？"}
+      ],
+      "pitfalls": [
+        "再用 did 构成否定 / 疑问：谓语是 was / were，不是 did。",
+        "was / were 与主语不匹配：I / he / she / it 用 was，you / we / they 用 were。",
+        "缺少精确时间锚点，语义会飘。"
+      ],
+      "links": [["ch01", "现在进行时"], ["ch05", "一般过去时"], ["ch08", "when / while"]]
+    },
+    {
+      "id": "ch08", "no": 8, "name": "瞬间动词与延续性动词", "en": "Punctual vs Continuous", "tag": "专题 · when vs while",
+      "meaning": "动词分能否延续两类，这决定了进行时的含义，也决定了 when / while 的选择。",
+      "key": ["瞬间动词的进行时表示「即将发生」，不是「正在进行」。", "when 多接瞬间动词，while 通常只接延续性动词。"],
+      "tables": [
+        {"caption": "when PK while", "head": ["对比项", "when", "while"], "rows": [
+          ["后可接动词", "瞬间动词（多）或延续性动词", "通常只接延续性动词"],
+          ["典型例句", "Sarah was sleeping when the thief came in.", "Sarah was dancing while her sister was singing."]
+        ]},
+        {"caption": "动词分类", "head": ["类型", "定义", "进行时含义"], "rows": [
+          ["瞬间动词", "动作瞬间完成，不能延续，持续时间极短", "表「即将发生」，如 She is leaving."],
+          ["延续性动词", "动作能延续下去或产生持久的影响", "表「正在进行」"]
+        ]}
+      ],
+      "bullets": [],
+      "markers": [],
+      "examples": [
+        {"en": "She is leaving.", "zh": "她马上就要走了。", "note": "瞬间动词 + 进行时 = 即将发生"},
+        {"en": "Sarah was sleeping when the thief came in.", "zh": "当 Sarah 正在睡觉的时候，小偷进来了。", "note": "背景 + 事件"},
+        {"en": "Sarah was dancing while her sister was singing.", "zh": "当 Sarah 正在跳舞的时候，她的姐姐正在唱歌。", "note": "两个延续性动作同时进行"}
+      ],
+      "pitfalls": [
+        "用 while 接瞬间动词：while the thief came in → when the thief came in。",
+        "把进行时一律读成「正在」：瞬间动词加进行时表将来。"
+      ],
+      "links": [["ch01", "现在进行时"], ["ch07", "过去进行时"]]
+    }
+  ],
+  "cheats": [
+    {"id": "decide", "title": "时态选择决策", "steps": [
+      "句中有时间状语 → 直接按标志词定位（见「标志词 → 时态」）。",
+      "没有标志词 → 问三个问题：",
+      "① 此刻 / 现阶段正在发生 → 现在进行时；过去某一精确时刻正在发生 → 过去进行时。",
+      "② 反复发生（习惯、性格能力特征、状态、客观真理）→ 一般现在时。",
+      "③ 发生在过去：时间确切且已结束 → 一般过去时；时间模糊、强调对现在的影响 → 现在完成时。",
+      "事情在将来：有计划或有迹象 → be going to；纯将来或临时决定 → will；第一人称且偏正式 → shall。",
+      "是在给建议 → had better + 动词原形（否定：had better not + 动词原形）。"
+    ]},
+    {"id": "markers", "title": "标志词 → 时态", "head": ["标志词", "时态"], "rows": [
+      ["now; at the moment; Look!; Listen!; today; this morning / afternoon / evening; tonight", "现在进行时"],
+      ["频率副词（always, usually, often, sometimes, rarely, never）; every…; once…; twice…; …times; in the morning; at noon / night; on Sundays", "一般现在时"],
+      ["just now; yesterday; ago; last; before; when + 过去时间；（this 系列）", "一般过去时"],
+      ["just; never; ever; already; yet; for; since; up to now; up till now; by", "现在完成时"],
+      ["at + 时刻 + 过去时间; at this time + 过去时间", "过去进行时"],
+      ["tomorrow; next; future; soon; from now on; in + 段时间", "一般将来时"]
+    ]},
+    {"id": "names", "title": "三句命名法：过去相关时态怎么选", "head": ["笔记命名", "时态", "判断依据"], "rows": [
+      ["过去的确切", "一般过去时", "时间确切，动作已发生且结束"],
+      ["过去的模糊", "现在完成时", "时间不明确，强调对现在的影响或持续至今"],
+      ["过去的精确", "过去进行时", "有精确时刻，强调那一刻正在发生"]
+    ]},
+    {"id": "mnemonics", "title": "五个口诀", "head": ["口诀", "管什么"], "rows": [
+      ["直去双改特", "动词变过去式 / 过去分词：直接加、去 e 加、改 y 为 i、重读闭音节双写、特殊变化"],
+      ["哦撑死是错", "o / s / x / ch / sh 结尾的动词加 -es"],
+      ["吸星大法 / 照妖镜", "出现助动词后实义动词一律还原：doesn't work，Did you see，has gone"],
+      ["Be 助后，实义前", "频率副词的位置"],
+      ["just easy & fun", "现在完成时的标志词"]
+    ]},
+    {"id": "transform", "title": "句式改造（任何时态通用）", "head": ["想做什么", "怎么办"], "rows": [
+      ["变否定", "找 Be、助动词或情态动词，把 not 挂在它后面；实义动词单独作谓语时借 do / does / did"],
+      ["变一般疑问", "把 Be、助动词或情态动词提到主语前；实义动词单独作谓语时借 do / does / did"],
+      ["助动词出现后", "实义动词还原：一般现在 → 原形；一般过去 → 原形；现在完成 → 过去分词"]
+    ]},
+    {"id": "trap", "title": "易错点速查", "head": ["症状", "病因", "修正"], "rows": [
+      ["I teaching English.", "进行时丢了 Be", "I am teaching English."],
+      ["He doesn't works.", "助动词后没还原", "He doesn't work."],
+      ["Did you saw it?", "did 后未还原", "Did you see it?"],
+      ["I have finished it yesterday.", "明确过去时间配现在完成时", "I finished it yesterday."],
+      ["Zoe has gone to America.（想说去过）", "gone / been 混用", "Zoe has been to America."],
+      ["for ten years / since 2015 互换", "for 配时间段，since 配时间点", "for + 时间段；since + 时间点"],
+      ["while the thief came in", "while 接了瞬间动词", "when the thief came in"],
+      ["He stays always at home.", "频率副词位置错", "He always stays at home."],
+      ["She is leaving. 读成「正在离开」", "瞬间动词 + 进行时", "理解为「她马上就要走了」"],
+      ["He work every day.", "三单没变", "He works every day."]
+    ]},
+    {"id": "forms", "title": "变化规则一页版", "head": ["目标形态", "规则", "例"], "rows": [
+      ["现在分词", "直接加 ing／去不发音 e 加 ing／重读闭音节双写加 ing／ie 变 y 加 ing", "working；biting；running；dying"],
+      ["三单", "直接加 -s／o,s,x,ch,sh 加 -es／辅音 + y 变 ies／特殊", "works；watches；studies；has"],
+      ["过去式", "直去双改特", "worked；moved；studied；stopped；went"],
+      ["过去分词", "多数同过去式（ABB），另有 AAA / ABA / ABC", "cut cut cut；come came come；go went gone"]
+    ]}
+  ],
+  "terms": [
+    ["一般现在时", "表示经常性 / 习惯性动作、主语特征、状态、客观事实与普遍真理。", "ch04"],
+    ["现在进行时", "am / is / are + doing，表示说话时或现阶段正在发生的事。", "ch01"],
+    ["一般过去时", "过去一个确切时间发生并已结束的动作，简称「过去的确切」。", "ch05"],
+    ["现在完成时", "have / has + 过去分词，表示过去发生且与现在相关，简称「过去的模糊」。", "ch06"],
+    ["过去进行时", "was / were + doing，表示过去某一精确时间正在发生，简称「过去的精确」。", "ch07"],
+    ["一般将来时", "表示在将来某一时间要发生的动作或存在的状态。", "ch02"],
+    ["had better", "表示「最好还是……」，用于建议、劝告或表达愿望；had 不表示过去，后接动词原形。", "ch03"],
+    ["Be 动词", "am / is / are 与 was / were，进行时句式的谓语核心。", "ch01"],
+    ["助动词", "do / does / did / have / has / will / shall 等，承担句式变化，出现后实义动词还原。", "ch04"],
+    ["情态动词", "自带句式通道的一类动词：肯定接原形，否定在其后加 not，疑问提前。", "ch04"],
+    ["三单形式", "主语为第三人称单数时实义动词的变形。", "ch04"],
+    ["现在分词（ing 形式）", "动词的 ing 形式，规则为直接加、去 e 加、双写、ie 变 y。", "ch01"],
+    ["过去式", "动词的过去形态，规则变化看「直去双改特」，不规则变化成组记忆。", "ch05"],
+    ["过去分词", "构成完成时的动词形态，多数与过去式同形。", "ch06"],
+    ["重读闭音节", "末尾为「辅音 + 元音 + 辅音」且重读的音节，触发双写规则。", "ch01"],
+    ["频率副词", "always / usually / often / sometimes / rarely / never，标示习惯性动作。", "ch04"],
+    ["标志词", "提示应选哪个时态的时间状语，如 now、yesterday、already。", "ch06"],
+    ["瞬间动词", "动作在瞬间完成、不能延续，持续时间极短。", "ch08"],
+    ["延续性动词", "动作能够延续下去或产生持久影响。", "ch08"],
+    ["for", "后接时间段，强调某动作持续了多长时间，如 for ten years。", "ch06"],
+    ["since", "后接时间点或过去发生的动作，强调某动作从何时开始。", "ch06"],
+    ["have gone to", "到某地去了（去了；未归）。", "ch06"],
+    ["have been to", "曾经去过某地（去过；已归）。", "ch06"],
+    ["when", "引导时间状语从句，可接瞬间动词或延续性动词，多接瞬间动词。", "ch08"],
+    ["while", "引导时间状语从句，通常只接延续性动词。", "ch08"],
+    ["shall", "仅用于第一人称 I / we 的将来时助动词。", "ch02"],
+    ["will", "最常用、适用于所有人称的将来时助动词；可表示将要到达的年及年龄。", "ch02"],
+    ["be going to", "表计划、打算、准备，或表示有迹象将要发生的将来时结构，后接动词原形。", "ch02"],
+    ["吸星大法 / 照妖镜", "笔记对助动词令实义动词还原原形这一现象的称呼。", "ch04"],
+    ["口诀「直去双改特」", "动词过去式与过去分词的变化规则。", "ch05"],
+    ["口诀「哦撑死是错」", "o / s / x / ch / sh 结尾的动词加 -es 的记忆口诀。", "ch04"],
+    ["口诀「Be 助后，实义前」", "频率副词的位置规则。", "ch04"],
+    ["口诀「just easy & fun」", "现在完成时标志词：just, ever, since, for, up to now, up till now, never。", "ch06"],
+    ["AAA / ABA / ABC / ABB 型", "动词三形是否相同：cut cut cut；come came come；go went gone；多数动词为 ABB 型。", "ch06"]
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var KB = JSON.parse(document.getElementById("kb").textContent);
+  var TENSES = KB.tenses, CHEATS = KB.cheats, TERMS = KB.terms;
+  var byId = {};
+  TENSES.forEach(function (t) { byId[t.id] = t; });
+
+  var app = document.getElementById("app");
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+
+  /* ---------- 搜索索引 ---------- */
+  function flatten(v, out) {
+    if (v == null) return out;
+    if (typeof v === "string") { out.push(v); return out; }
+    if (Array.isArray(v)) { v.forEach(function (x) { flatten(x, out); }); return out; }
+    if (typeof v === "object") { Object.keys(v).forEach(function (k) { flatten(v[k], out); }); return out; }
+    out.push(String(v)); return out;
+  }
+  var IDX = [];
+  TENSES.forEach(function (t) {
+    IDX.push({
+      type: "tense", id: t.id, title: t.name,
+      sub: t.tag + " · " + (t.meaning || "").slice(0, 34) + "…",
+      tag: t.tag, no: t.no,
+      hay: flatten([t.name, t.en, t.tag, t.meaning, t.key, t.tables, t.bullets, t.markers, t.examples, t.pitfalls], []).join(" ").toLowerCase()
+    });
+  });
+  CHEATS.forEach(function (c) {
+    IDX.push({
+      type: "cheat", id: c.id, title: c.title,
+      sub: (c.rows ? c.rows.length + " 行对照" : (c.steps || []).length + " 步"),
+      tag: "速查", no: "",
+      hay: flatten([c.title, c.head, c.rows, c.steps], []).join(" ").toLowerCase()
+    });
+  });
+  TERMS.forEach(function (t) {
+    IDX.push({ type: "term", id: t[2], title: t[0], sub: t[1], tag: "术语", no: "", hay: (t[0] + " " + t[1]).toLowerCase() });
+  });
+
+  /* ---------- 工具 ---------- */
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("on"); }, 1800);
+  }
+  function copyText(text, okMsg) {
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:0;left:-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? okMsg : "复制失败，请长按选择文字");
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { toast(okMsg); }, fallback);
+    } else { fallback(); }
+  }
+  function tableHtml(t) {
+    var h = "";
+    if (t.caption) h += '<p class="list-title">' + esc(t.caption) + "</p>";
+    h += '<div class="scroll"><table><tbody>';
+    if (t.head) {
+      h += "<tr>";
+      t.head.forEach(function (c) { h += "<th>" + esc(c) + "</th>"; });
+      h += "</tr>";
+    }
+    t.rows.forEach(function (row) {
+      h += "<tr>";
+      row.forEach(function (c, i) {
+        var mono = /[+／/]/.test(c) && c.length < 90 && i > 0 ? " class=\"mono\"" : "";
+        h += "<td" + mono + ">" + esc(c) + "</td>";
+      });
+      h += "</tr>";
+    });
+    return h + "</tbody></table></div>";
+  }
+  function tensePlainText(t) {
+    var out = ["【" + t.name + "】" + t.tag, t.meaning, ""];
+    (t.tables || []).forEach(function (tb) {
+      out.push("— " + (tb.caption || "") + " —");
+      if (tb.head) out.push(tb.head.join(" | "));
+      tb.rows.forEach(function (r) { out.push(r.join(" | ")); });
+      out.push("");
+    });
+    (t.bullets || []).forEach(function (b) {
+      out.push("· " + b.title);
+      b.items.forEach(function (i) { out.push("  - " + i); });
+    });
+    if ((t.markers || []).length) out.push("标志词：" + t.markers.join("; "));
+    (t.examples || []).forEach(function (e) { out.push("例：" + e.en + " " + (e.zh || "")); });
+    if ((t.pitfalls || []).length) { out.push("易错："); t.pitfalls.forEach(function (p) { out.push("  ✗ " + p); }); }
+    return out.join("\n");
+  }
+
+  /* ---------- 页面片段 ---------- */
+  function heroHtml() {
+    var zones = [
+      { head: "过去：三种说法", items: ["ch05", "ch07", "ch06"] },
+      { head: "现在与将来", items: ["ch01", "ch04", "ch02"] }
+    ];
+    var labels = {
+      ch05: ["过去的确切", "pen"], ch07: ["过去的精确", ""], ch06: ["过去的模糊", "pen"],
+      ch01: ["此刻正在", ""], ch04: ["反复发生", ""], ch02: ["将来", ""]
+    };
+    var h = '<section class="hero"><div class="axis"><span>过去</span><span class="bar"><span class="now"></span></span><span>将来</span></div><div class="zones">';
+    zones.forEach(function (z) {
+      h += '<div class="zone"><div class="zone-head">' + esc(z.head) + "</div>";
+      z.items.forEach(function (id) {
+        var t = byId[id], lb = labels[id];
+        h += '<button class="chip" data-go="' + id + '"><b class="' + lb[1] + '">' + esc(lb[0]) + "</b><span>" +
+             esc(t.name) + "</span><i>" + esc((t.markers || []).slice(0, 3).join(" · ") || t.tag) + "</i></button>";
+      });
+      h += "</div>";
+    });
+    h += "</div></section>";
+    return h;
+  }
+  function searchHtml() {
+    return '<div class="searchbar"><div class="searchbox">' +
+      '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>' +
+      '<input id="q" type="search" inputmode="search" autocomplete="off" placeholder="搜时态、标志词、口诀、例句…" aria-label="搜索时态知识">' +
+      '<button class="clear" id="clr" type="button" aria-label="清空搜索">×</button></div></div>';
+  }
+  function segmentsHtml(active) {
+    var items = [["home", "时态"], ["cheatsheet", "速查"], ["terms", "术语"]];
+    return '<div class="segments" role="tablist">' + items.map(function (i) {
+      return '<button type="button" role="tab" data-seg="' + i[0] + '" aria-selected="' + (active === i[0]) + '">' + i[1] + "</button>";
+    }).join("") + "</div>";
+  }
+  function rowHtml(t) {
+    return "<li><button class=\"row\" data-go=\"" + t.id + "\">" +
+      '<span class="no">' + t.no + "</span>" +
+      '<span class="body"><span class="t">' + esc(t.name) + '</span><span class="s">' + esc(t.meaning) + "</span></span>" +
+      '<span class="tag">' + esc(t.tag) + "</span>" +
+      '<span class="arrow">›</span></button></li>';
+  }
+
+  /* ---------- 视图（top 常驻，只有 view 会重绘，保证搜索框不丢焦点） ---------- */
+  app.innerHTML = '<div id="top"></div><div id="view"></div>';
+  var topEl = document.getElementById("top");
+  var viewEl = document.getElementById("view");
+
+  function renderHome() {
+    topEl.innerHTML = heroHtml() + searchHtml() + segmentsHtml("home");
+    viewEl.innerHTML = '<p class="list-title">按笔记顺序<small>点开看构成、标志词、例句与易错</small></p><ul class="index">' +
+      TENSES.map(rowHtml).join("") + "</ul>";
+  }
+  function renderCheats(scrollTo) {
+    topEl.innerHTML = searchHtml() + segmentsHtml("cheatsheet");
+    viewEl.innerHTML = CHEATS.map(function (c) {
+      var inner = c.rows ? tableHtml(c)
+        : '<ol class="bullets">' + c.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ol>";
+      return '<section class="block" id="cheat-' + c.id + '"><h2>' + esc(c.title) + "</h2>" + inner + "</section>";
+    }).join("");
+    if (scrollTo) {
+      var el = document.getElementById("cheat-" + scrollTo);
+      if (el) requestAnimationFrame(function () { el.scrollIntoView({ block: "start" }); });
+    } else { window.scrollTo(0, 0); }
+  }
+  function renderTerms() {
+    topEl.innerHTML = searchHtml() + segmentsHtml("terms");
+    viewEl.innerHTML = '<p class="list-title">术语<small>' + TERMS.length + " 条 · 点章节名可跳转</small></p>" +
+      TERMS.map(function (t) {
+        var ch = byId[t[2]];
+        return '<div class="term"><div class="w">' + esc(t[0]) + '</div><div class="d">' + esc(t[1]) +
+               '</div><div class="c"><a href="#' + t[2] + '" data-go="' + t[2] + '">' + esc(t[2]) + " · " +
+               esc(ch ? ch.name : "") + "</a></div></div>";
+      }).join("");
+    window.scrollTo(0, 0);
+  }
+  function renderTense(id) {
+    var t = byId[id];
+    if (!t) { renderHome(); return; }
+    topEl.innerHTML = "";
+    var h = '<div class="backbar"><button class="back" data-seg="home">‹ 返回</button>' +
+            '<button class="copy" data-copy="' + id + '">复制全文</button></div>' +
+            '<h1 class="detail-h">' + esc(t.name) + "</h1>" +
+            '<p class="detail-meta">' + esc(t.en) + " · " + esc(t.tag) + " · 第 " + t.no + " 章</p>" +
+            '<p class="lede">' + esc(t.meaning) + "</p>";
+    if ((t.key || []).length) {
+      h += '<section class="block"><h2>先记住</h2><ul class="keys">' +
+           t.key.map(function (k) { return "<li>" + esc(k) + "</li>"; }).join("") + "</ul></section>";
+    }
+    (t.tables || []).forEach(function (tb) {
+      h += '<section class="block"><h2>' + esc(tb.caption || "构成") + "</h2>" + tableHtml(tb) + "</section>";
+    });
+    (t.bullets || []).forEach(function (b) {
+      h += '<section class="block"><h2>' + esc(b.title) + '</h2><ul class="bullets">' +
+           b.items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></section>";
+    });
+    if ((t.markers || []).length) {
+      h += '<section class="block"><h2>标志词</h2><ul class="markers">' +
+           t.markers.map(function (m) { return "<li>" + esc(m) + "</li>"; }).join("") + "</ul></section>";
+    }
+    if ((t.examples || []).length) {
+      h += '<section class="block"><h2>例句</h2>' + t.examples.map(function (e) {
+        return '<div class="ex"><div class="en">' + esc(e.en) + '</div><div class="zh">' + esc(e.zh || "") + "</div>" +
+               (e.note ? '<div class="note">' + esc(e.note) + "</div>" : "") + "</div>";
+      }).join("") + "</section>";
+    }
+    if ((t.pitfalls || []).length) {
+      h += '<section class="block"><h2>易错点</h2><ul class="trap">' +
+           t.pitfalls.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul></section>";
+    }
+    if ((t.links || []).length) {
+      h += '<section class="block"><h2>相关</h2><p class="links">' +
+           t.links.map(function (l) { return '<a href="#' + l[0] + '" data-go="' + l[0] + '">' + esc(l[1]) + "</a>"; }).join("") + "</p></section>";
+    }
+    viewEl.innerHTML = h;
+    window.scrollTo(0, 0);
+  }
+  function renderResults(q) {
+    var query = q.trim().toLowerCase();
+    var hits = IDX.filter(function (x) { return x.hay.indexOf(query) >= 0; });
+    var h = '<p class="detail-meta">' + hits.length + ' 条结果</p>';
+    if (!hits.length) {
+      h += '<div class="empty"><b>没找到「' + esc(q) + '」</b>换个说法试试：现在完成时 · 标志词 · 直去双改特 · when · for。</div>';
+    } else {
+      [["tense", "时态"], ["cheat", "速查"], ["term", "术语"]].forEach(function (g) {
+        var list = hits.filter(function (x) { return x.type === g[0]; });
+        if (!list.length) return;
+        h += '<div class="res-group"><h3>' + g[1] + "</h3>";
+        if (g[0] === "term") {
+          h += list.map(function (x) {
+            return '<div class="term"><div class="w">' + esc(x.title) + '</div><div class="d">' + esc(x.sub) +
+                   '</div><div class="c"><a href="#' + x.id + '" data-go="' + x.id + '">' +
+                   esc(byId[x.id] ? byId[x.id].name : "") + "</a></div></div>";
+          }).join("");
+        } else if (g[0] === "cheat") {
+          h += '<ul class="index">' + list.map(function (x) {
+            return '<li><button class="row" data-cheat="' + x.id + '"><span class="body"><span class="t">' + esc(x.title) +
+                   '</span><span class="s">' + esc(x.sub) + '</span></span><span class="tag">速查</span><span class="arrow">›</span></button></li>';
+          }).join("") + "</ul>";
+        } else {
+          h += '<ul class="index">' + list.map(function (x) {
+            return '<li><button class="row" data-go="' + x.id + '"><span class="no">' + x.no + '</span><span class="body"><span class="t">' +
+                   esc(x.title) + '</span><span class="s">' + esc(x.sub) + '</span></span><span class="tag">' + esc(x.tag) +
+                   '</span><span class="arrow">›</span></button></li>';
+          }).join("") + "</ul>";
+        }
+        h += "</div>";
+      });
+    }
+    viewEl.innerHTML = h;
+  }
+
+  /* ---------- 路由 ---------- */
+  function go(hash) { location.hash = hash; }
+  function route() {
+    var raw = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
+    var q = document.getElementById("q");
+    if (q) q.value = "";                                  // 换页时清空搜索
+    if (!raw) { renderHome(); return; }
+    if (byId[raw]) { renderTense(raw); return; }
+    if (raw === "cheatsheet") { renderCheats(); return; }
+    if (raw === "terms") { renderTerms(); return; }
+    if (raw.indexOf("cheat-") === 0) { renderCheats(raw.slice(6)); return; }
+    renderHome();
+  }
+
+  /* ---------- 交互 ---------- */
+  document.addEventListener("click", function (ev) {
+    var el = ev.target;
+    if (!el || !el.closest) return;
+    var goBtn = el.closest("[data-go]");
+    if (goBtn) { ev.preventDefault(); go(goBtn.getAttribute("data-go")); return; }
+    var seg = el.closest("[data-seg]");
+    if (seg) { var v = seg.getAttribute("data-seg"); go(v === "home" ? "" : v); return; }
+    var ch = el.closest("[data-cheat]");
+    if (ch) { go("cheat-" + ch.getAttribute("data-cheat")); return; }
+    var cp = el.closest("[data-copy]");
+    if (cp) { copyText(tensePlainText(byId[cp.getAttribute("data-copy")]), "已复制，可直接粘贴到微信"); return; }
+    if (el.id === "clr") {
+      var input = document.getElementById("q");
+      document.getElementById("clr").classList.remove("on");
+      if (input) { input.value = ""; input.focus(); }
+      renderHome();
+      var again = document.getElementById("q");
+      if (again) again.focus();
+    }
+  });
+
+  document.addEventListener("input", function (ev) {
+    if (!ev.target || ev.target.id !== "q") return;
+    var v = ev.target.value;
+    var clr = document.getElementById("clr");
+    if (clr) clr.classList.toggle("on", v.length > 0);
+    if (v.trim()) renderResults(v);
+    else if (location.hash) { location.hash = ""; }
+    else {
+      viewEl.innerHTML = '<p class="list-title">按笔记顺序<small>点开看构成、标志词、例句与易错</small></p><ul class="index">' +
+        TENSES.map(rowHtml).join("") + "</ul>";
+    }
+  });
+  window.addEventListener("hashchange", route);
+  route();
+
+  /* 支持 ?q=关键词 的分享链接：打开即出结果 */
+  var preset = new URLSearchParams(location.search).get("q");
+  if (preset && preset.trim()) {
+    var box = document.getElementById("q");
+    if (box) {
+      box.value = preset;
+      var clrBtn = document.getElementById("clr");
+      if (clrBtn) clrBtn.classList.add("on");
+      renderResults(preset);
+    }
+  }
+
+  /* ?debug=1 输出布局自检数据（全 ASCII，便于自动化核对） */
+  if (new URLSearchParams(location.search).get("debug") === "1") {
+    setTimeout(function () {
+      var o = {
+        vw: window.innerWidth,
+        docW: document.documentElement.scrollWidth,
+        over: [], counts: {}
+      };
+      ["row", "chip", "term", "zone", "key", "trap", "ex", "marker"].forEach(function (c) {
+        o.counts[c] = document.querySelectorAll("." + c).length;
+      });
+      o.counts.block = document.querySelectorAll("section.block").length;
+      o.counts.table = document.querySelectorAll("table").length;
+      Array.prototype.forEach.call(document.querySelectorAll("body *"), function (n) {
+        var st = getComputedStyle(n);
+        if (n.scrollWidth - n.clientWidth > 2 && st.overflowX !== "auto" && st.overflowX !== "scroll" && n.clientWidth > 0) {
+          o.over.push((n.tagName + "." + String(n.className || "-")).slice(0, 46) + " sw" + n.scrollWidth + " cw" + n.clientWidth);
+        }
+      });
+      var h = document.querySelector(".detail-h") || document.querySelector(".list-title") || document.body;
+      o.titleCodes = Array.prototype.slice.call(h.textContent.trim().slice(0, 6)).map(function (c) { return c.codePointAt(0); });
+      var pre = document.createElement("pre");
+      pre.id = "dbg";
+      pre.textContent = "DBGSTART" + JSON.stringify(o) + "DBGEND";
+      document.body.appendChild(pre);
+    }, 400);
+  }
+})();
+</script>
+</body>
+</html>
