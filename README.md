@@ -2,6 +2,18 @@
 
 一个**单文件、零依赖、可离线**的英语时态查询工具，专为手机和微信内打开设计。整个工具就是一个 `index.html`，没有后端、不请求任何外部资源。
 
+## 在线地址
+
+已托管在 GitHub Pages（公开仓库 `kaizhang118-star/english-tenses`）：
+
+**https://kaizhang118-star.github.io/english-tenses/**
+
+带关键词直达：`https://kaizhang118-star.github.io/english-tenses/?q=现在完成时`
+
+进章节直达：`https://kaizhang118-star.github.io/english-tenses/#ch06`
+
+在微信里发给自己（文件传输助手）或存进「收藏」，之后随时点开即可。
+
 ## 它解决什么
 
 原 `english-tenses` 技能只能在这台电脑上通过 Codex 调用。这个网页版把它搬到任何能上网的设备上：微信里点开链接就能查，不需要这台电脑开机。
@@ -58,7 +70,19 @@
 
 内容整理自一份第三方中文语法笔记（有道笔记导出）。作为个人学习工具自用没问题；如果要放到公开可检索的网址上传播，建议使用未公开的链接，或选择需要登录/密码的托管方式，避免公开再分发他人整理的资料。
 
-## 怎么更新内容
+## 怎么更新线上内容
+
+本机到 `github.com` 的 git 传输会被网络重置（`git push` 报 `Connection was reset`），但 `api.github.com` 可用，所以更新走 Contents API：
+
+```powershell
+python C:\Users\Administrator\english-tenses-web\sync-to-github.py
+```
+
+脚本会逐个比对本地文件与线上文件的 git blob 哈希，只提交真正变动的文件；令牌从 Windows 凭据管理器读取，不落盘。提交后约 1 分钟线上生效。
+
+换一台能正常访问 GitHub 的电脑时，也可以直接 `git push`。
+
+## 怎么改内容
 
 所有知识点都在 `index.html` 底部的 `<script type="application/json" id="kb">` 里，是纯 JSON：
 
